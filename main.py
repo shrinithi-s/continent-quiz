@@ -1,16 +1,17 @@
-from turtle import Turtle,Screen,onscreenclick,mainloop
+from turtle import Turtle,Screen
 import pandas as pd
+
+screen=Screen()
+screen.setup(1024, 794)
+screen.title("Seven Continents Game 🗺")
+screen.colormode(255)
 
 main=Turtle()
 user_state=Turtle()
 user_state.hideturtle()
 user_state.penup()
-user_state.pencolor("red")
+user_state.pencolor((214, 28, 78))
 user_state.pensize(100)
-
-screen=Screen()
-screen.setup(1024, 794)
-screen.title("Seven Continents Game 🗺")
 
 data=pd.read_csv("continents.csv")
 continents_list=data["continent"].to_list()
@@ -25,7 +26,6 @@ score=0
 game_start=True
 user_guess=[]
 
-
 while score<len(continents_list):
     title=f"{score}/{len(continents_list)}"
     if(game_start):
@@ -39,14 +39,4 @@ while score<len(continents_list):
         user_state.goto(x[answer],y[answer])
         user_state.write(answer, font=("Times New Roman",20,"bold"))
 
-
 screen.exitonclick()
-
-
-
-# def get_mouse_click_coor(x, y):
-#     print(x, y)
-
-# onscreenclick(get_mouse_click_coor)
-
-# mainloop()
